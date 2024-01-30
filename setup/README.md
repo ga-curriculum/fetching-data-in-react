@@ -16,6 +16,7 @@ cd [tktk-module-name]
 ```
 
 <!-- Other setup instructions here -->
+CREATOR GUIDANCE: Use the same start a vite app instructions as previous React lessons
 
 
 Open the contents of the directory in VSCode:

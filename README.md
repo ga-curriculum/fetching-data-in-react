@@ -1,4 +1,4 @@
-# ![[tktk Module Name]](./assets/tktk-hero.png)
+# ![React Data Fetching](./assets/tktk-hero.png)
 
 ## About
 
@@ -6,27 +6,24 @@ tktk Write a short but descriptive summary of the content in this module.
 
 ## Prerequisites
 
-- tktk
-- tktk
-- tktk
+- Intro to React
+- Building Your First React App
+- User Events in React
 
 ## Content
 
-| Lesson | Video Time | Video | Skills |
-| ------ |:----------:|:-----:| ------ |
-| [Setup](./setup/README.md)                               | -- | -- | Setting up the development environment  |
-| [Concepts](./concepts/README.md)                         | -- | -- | tktk skills covered                     |
-| [tktk Microlesson Name](./tktk-microlesson-01/README.md) | -- | -- | tktk skills covered                     |
-| [tktk Microlesson Name](./tktk-microlesson-02/README.md) | -- | -- | tktk skills covered                     |
-| [tktk Microlesson Name](./tktk-microlesson-03/README.md) | -- | -- | tktk skills covered                     |
-| **Total content**                                        | -- | -- |                                         |
+| Lesson | Skills |
+| ------ | ------ |
+| [Setup](./setup/README.md)                               | Setting up the development environment |
+| [Concepts](./concepts/README.md)                               | Describe the importance of state management |
+| [Making Fetch Requests in React](./making-fetch-requests-in-react/README.md) | Fetch and display data from an API                   |
 
-## Level Up content
+## Level Up
 
-| Lesson | Video Time | Video | Skills |
-| ------ |:----------:|:-----:| ------ |
-| [tktk Microlesson Name](./tktk-microlesson-04/README.md) | -- | -- | tktk skills covered                     |
-| **Total Level Up content**                               | -- | -- |                                         |
+| Lesson | Skills |
+| ------ | ------ |
+| [Securing API Keys](./securing-api-keys/README.md)                               | Implement proxy servers for securing API keys |
+
 
 ## References
 
