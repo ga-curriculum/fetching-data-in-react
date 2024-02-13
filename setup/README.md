@@ -52,3 +52,5 @@ const App = () => {
 
 export default App
 ```
+
+Start the dev server by running `npm run dev` in your terminal and the go to `localhost:5173` in your browser.
