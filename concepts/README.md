@@ -32,4 +32,5 @@ The advantage to Single Page Applications is that they only load tiny pieces of 
 
 ## How will we work with AJAX in React?
 
-In this module, we will be using AJAX to fetch data from an external source and then update the DOM using that data.  Note, that we could fetch the data from anywhere.  Unlike in Server-Side Rendered Applications, there is no inherent connection between the React applications that we will write and the data sources that we will be working with.
+In this module, we will be using AJAX to fetch data from an external source called an API and then update the DOM using that data.  An API is a website that responds with JSON data instead of HTML/CSS/JS.  Note, that we could fetch the data from anywhere.  Unlike in Server-Side Rendered Applications, there is no inherent connection between the React applications that we will write and the data sources that we will be working with.
+
