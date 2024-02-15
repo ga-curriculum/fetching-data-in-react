@@ -2,10 +2,175 @@
 
 **Learning objective:** By the end of this lesson, students will be able to send an http request from a react application and parse its response to update state.
 
-Put together a little demo app with a form, input, and an onSubmit handler that sends a fetch request to an API, stores the response in state, and displays the data on the page, ideally using a separate component and props.
+## Introduction:
 
-The weatherstack API demo walkthrough here can provide an extremely reasonable starting point: https://git.generalassemb.ly/ModernEngineering/weather-api-walkthrough  Let Ryan Brodsky know if you need access.
+In this lesson, we'll practice React with AJAX by learning how to create a React application and use the `fetch()` function to retrieve weather information based on a given city from the [Weather API](https://www.weatherapi.com/).
 
-Of course, in adapting the above lesson, do NOT use create-react-app: stick with the vite setup we've been doing all along and make sure you change things in the lesson to no longer refer back to a CRA app.
+Here's one idea of what the central portion of your User Interface could look like:
 
+![weather application](https://raw.git.generalassemb.ly/ModernEngineering/weather-api-walkthrough/main/ui-screenshot.png?token=AAAAMSY6G4FASRD5YZFJY7LF2TV24)
 
+The application we're building will be completely absent of styles; however, you'll be allowed to style this application later.
+
+## Create Form
+
+In `App.jsx` let's create a form with which our user can interact:
+
+```jsx
+//App.jsx
+
+return (
+	<form>
+		Please enter your city name for the weather:
+		<input type="text"/>
+		<input type="submit" value="Get my forecast!" />
+	</form>
+)
+```
+
+## Initializing "city" state variable
+
+Let's add the below import statement to the top of our `App.jsx` component file:
+
+```jsx
+// App.jsx
+import { useState } from 'react';
+```
+
+Now we need to add state to our main `App` component. We'll achieve this by using the `useState` hook we just imported above to initialize the `city` and `setCity` variables:
+
+```jsx
+// import statements above
+const App = () => {
+	const [city, setCity] = useState('');
+	// more code below
+```
+
+## 4. Handling the City Change
+
+Now let's add an event handler that will respond to change events when a user types into the text field.
+
+```jsx
+const handleChange = (event) => {
+  setCity(event.target.value);
+}
+```
+
+Now update the input to call that function `onChange`:
+
+```jsx
+<input type="text" onChange={handleChange} />
+```
+
+Lastly, for testing purposes, let's insert the `city` state variable into the DOM somewhere so that we can test to make sure our function works:
+
+```jsx
+Please enter your city name for the weather: {city}
+```
+
+Now, when you type into the input in the browser, you should see the same value reflected in place of `{city}`.  Once you've verified that that works, you can remove `{city}` from the HTML.  This was just for testing purposes.
+
+## 5. Fetching the Weather Data
+
+In this section, we're going to make a request to the [Weather API](https://www.weatherapi.com/docs/).  This could be done at any point by the application, but let's have JavaScript make the request when the user submits the form.
+
+This API has what is called a key, which you need in order to access the API.  Its function is to deter spammers and hackers by limiting the number of requests per month that each key makes.  In theory each application written should use a different API key, but for the sake of this exercise, we'll all use the same one (provided below).  The free tier is limited to 1 million requests per month, which will be enough.
+
+If you decide to [sign up](https://www.weatherapi.com/signup.aspx) for a Weather API key, there is a free tier and no credit card is required!
+
+Let's write a function that will be called when the user submits the form:
+
+```jsx
+//App.jsx
+
+const YOUR_API_KEY = '93926e8f19954ff8892185839241302'
+
+const handleSubmit = async (event) => {
+	event.preventDefault();
+	let response = await fetch(
+		`http://api.weatherapi.com/v1/current.json?key=${YOUR_API_KEY}&q=${city}`
+	);
+	let JSONdata = await response.json();
+	console.log(JSONdata)
+}
+```
+
+Some things to note:
+
+- `YOUR_API_KEY` This holds the key that we need to access the API, which I've already retrieved when writing these notes.
+- `event.preventDefault()` This prevents the form from submitting and refreshing the page.
+- `fetch()` is a global function that comes with JavaScript that allows us to make AJAX requests to outside sources like the Weather API.  Typically, AJAX requests take a long time, so we're going to prepend the function invocation with `await`.  This way, JS will wait until the response comes back from the Weather API before going on to the next line of code.  It will return an object containing information about the response that came back from the server such has header/meta information and the body of the response.
+- We'll use `response.json()` to return the body of the response as a javascript object.  This is also an asynchronous event, for reasons you don't have to worry about, so we'll add `await` in front of this too.
+- I was able to figure out how to format the URL of the API call by consulting [the docs](https://www.weatherapi.com/docs/).  Each API has different request URL's, so an important aspect of AJAX is parsing through the documentation of a given API.  Getting good at this takes practice, so read as much as you can!
+
+Now that the function is written, let's update the form to call `handleSubmit` when the user submits the form:
+
+```jsx
+<form onSubmit={handleSubmit}>
+```
+
+Test this in the browser by entering a city and checking the Dev Tools' console.  It should log some data pertaining to the weather of the location provided.
+
+## Insert Weather Data into the DOM
+
+In order to get the data we just logged from the Weather API into the DOM, we'll need to create state variables for each piece of data that we want to use.  I've chosen three (location, temperature, and conditions), but feel free to add more.  Update `App.jsx` as follows:
+
+```js
+const App = () => {
+	const [city, setCity] = useState('');
+	// add the following:
+	const [location, setLocation] = useState('');
+	const [temperature, setTemperature] = useState('');
+	const [conditions, setConditions] = useState('');
+```
+
+Once the state variables are set up, we can have `handleSubmit` update those values once they've been retrieved from the API.  Update `App.jsx` as follows:
+
+```js
+	let JSONdata = await response.json();
+	console.log(JSONdata)
+	// add the following
+	setLocation(JSONdata.location.name)
+	setTemperature(JSONdata.current.temp_f)
+	setConditions(JSONdata.current.condition.text)
+}
+```
+
+Run this again and note the data that is being logged in the console:
+
+![data](https://i.imgur.com/OO1xdpV.png)
+
+Again, each API is different and will have its data formatted differently.  As a developer, it's your job to figure out how to access the various data you want to use.  In the example, I looked through the object logged in the console to figure out the structure of it.
+
+- I noticed there is a `.location` property on it that itself is an object and contains the `.name` property.  I'd like to use that, so `JSONdata.location.name` is what I passed to `setLocation`.
+- Similarly the `.current` property is an object that itself has a property called `.temp_f`, which I pass to `setTemperature`.
+- Lastly, `.current` contains an object `.condition` which contains the `.text` property, which I pass to `setConditions`.
+
+Now that the state variables are being set correctly, let's update the HTML so that the user can see the results of their search.  Update the `return` in `App.jsx` like so:
+
+```js
+return (
+    <>
+      <form onSubmit={handleSubmit}>
+        Please enter your city name for the weather:
+        <input type="text" onChange={handleChange}/>
+        <input type="submit" value="Get my forecast!" />
+      </form>
+      {/* add the below */}
+      <h1> Here's Your Weather Report:</h1>
+      <p>Location: {location}</p>
+      <p>Temperature: {temperature}</p>
+      <p>Conditions: {conditions}</p>
+    </>
+  );
+```
+
+Test it in the browser.  Note that there are three stages to this app:
+
+1. Page loads
+1. User enters information and submits the form
+1. JavaScript makes a request to the weather API and inserts the data into the DOM, without refreshing the page.
+
+The important thing here is that the page did not reload after the user submitted the form.  AJAX retrieved just the small chunk of data needed and then updated just a small portion of the page.  In the old days, before SPA's and AJAX, this would have required a full page refresh.  As you can see this is a much quicker process.
+
+If it works as expected, you're done.  Congratulations!
