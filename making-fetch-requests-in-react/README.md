@@ -6,10 +6,6 @@
 
 In this lesson, we'll practice React with AJAX by learning how to create a React application and use the `fetch()` function to retrieve weather information based on a given city from the [Weather API](https://www.weatherapi.com/).
 
-Here's one idea of what the central portion of your User Interface could look like:
-
-![weather application](https://raw.git.generalassemb.ly/ModernEngineering/weather-api-walkthrough/main/ui-screenshot.png?token=AAAAMSY6G4FASRD5YZFJY7LF2TV24)
-
 The application we're building will be completely absent of styles; however, you'll be allowed to style this application later.
 
 ## Create Form
