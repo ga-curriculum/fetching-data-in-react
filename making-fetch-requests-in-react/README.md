@@ -98,6 +98,7 @@ Some things to note:
 - `fetch()` is a global function that comes with JavaScript that allows us to make AJAX requests to outside sources like the Weather API.  Typically, AJAX requests take a long time, so we're going to prepend the function invocation with `await`.  This way, JS will wait until the response comes back from the Weather API before going on to the next line of code.  It will return an object containing information about the response that came back from the server such has header/meta information and the body of the response.
 - We'll use `response.json()` to return the body of the response as a javascript object.  This is also an asynchronous event, for reasons you don't have to worry about, so we'll add `await` in front of this too.
 - I was able to figure out how to format the URL of the API call by consulting [the docs](https://www.weatherapi.com/docs/).  Each API has different request URL's, so an important aspect of AJAX is parsing through the documentation of a given API.  Getting good at this takes practice, so read as much as you can!
+- For educational purposes, we've put the API key right here in the file, which is insecure.  In production, you would take steps to hide the key from hackers.  To see how that's done, check out the Securing API Keys lesson for this module.
 
 Now that the function is written, let's update the form to call `handleSubmit` when the user submits the form:
 
