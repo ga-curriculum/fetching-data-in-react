@@ -1,4 +1,4 @@
-# ![React Data Fetching - Making Fetch Requests in React](./assets/hero.png)
+# ![Fetching Data in React - Making Fetch Requests in React](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to send an http request from a react application and parse its response to update state.
 

@@ -1,4 +1,4 @@
-# ![React Data Fetching - Concepts](./assets/hero.png)
+# ![Fetching Data in React - Concepts](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to describe what AJAX is as well as explain why it is useful within the context of Single Page Applications
 

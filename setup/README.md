@@ -1,4 +1,4 @@
-# ![[Fetching Data in React] - Setup](./assets/hero.png)
+# ![Fetching Data in React - Setup](./assets/hero.png)
 
 ## Setup
 
