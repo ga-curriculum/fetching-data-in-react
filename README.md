@@ -2,7 +2,7 @@
 
 ## About
 
-tktk Write a short but descriptive summary of the content in this module.
+In this module, students will learn how to fetch data from an API and display it in a React application. They will learn how to use the `fetch` API to make requests to a server and how to handle the response. They will also learn how to use `useEffect` to fetch data when a component mounts and how to use `useState` to store the data in the component's state.
 
 ## Prerequisites
 
@@ -15,16 +15,15 @@ tktk Write a short but descriptive summary of the content in this module.
 
 | Lesson | Skills |
 | ------ | ------ |
-| [Setup](./setup/README.md)                               | Setting up the development environment |
-| [Concepts](./concepts/README.md)                               | Describe the importance of getting data from a back-end into react |
-| [Making Fetch Requests in React](./making-fetch-requests-in-react/README.md) | Fetch and display data from an API                   |
+| [Setup](./setup/README.md) | Setting up the development environment |
+| [Concepts](./concepts/README.md) | Describe the importance of getting data from a back-end into react |
+| [Making Fetch Requests in React](./making-fetch-requests-in-react/README.md) | Fetch and display data from an API |
 
 ## Level Up
 
 | Lesson | Skills |
 | ------ | ------ |
-| [Securing API Keys](./securing-api-keys/README.md)                               | Implement proxy servers for securing API keys |
-
+| [Securing API Keys](./securing-api-keys/README.md) | Implement proxy servers for securing API keys |
 
 ## References
 
