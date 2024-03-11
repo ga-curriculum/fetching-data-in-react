@@ -1,4 +1,4 @@
-# ![React Data Fetching](./assets/tktk-hero.png)
+# ![Fetching Data in React](./assets/hero.png)
 
 ## About
 
@@ -6,24 +6,27 @@ tktk Write a short but descriptive summary of the content in this module.
 
 ## Prerequisites
 
+- Intro to Asynchronous Programming
 - Intro to React
 - Building Your First React App
 - User Events in React
-- Asynchronous Programming
 
 ## Content
 
 | Lesson | Skills |
 | ------ | ------ |
-| [Setup](./setup/README.md)                               | Setting up the development environment |
-| [Concepts](./concepts/README.md)                               | Describe the importance of getting data from a back-end into react |
-| [Making Fetch Requests in React](./making-fetch-requests-in-react/README.md) | Fetch and display data from an API                   |
+| [Setup](./setup/README.md) | Setting up the development environment |
+| [Concepts](./concepts/README.md) | Describe the importance of getting data from a back-end into React |
+| [Setting Up the Weather API](./setting-up-the-weather-api/README.md) | Setting up the Weather API to access an API Key |
+| [Fetching Data with Service Functions](./fetching-data-with-service-functions/README.md) | Making a fetch request with service functions in React |
+| [Fetching Data with User Input](./fetching-data-with-user-input/README.md) | Making fetch requests with user input in React |
+| [Background Data Fetching](./background-data-fetching/README.md) | Fetching data in the background with the `useEffect()` hook |
 
 ## Level Up
 
 | Lesson | Skills |
 | ------ | ------ |
-| [Securing API Keys](./securing-api-keys/README.md)                               | Implement proxy servers for securing API keys |
+| [Securing API Keys](./securing-api-keys/README.md) | Implementing proxy servers to secure API keys |
 
 
 ## References
