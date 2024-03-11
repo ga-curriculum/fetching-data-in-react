@@ -4,18 +4,18 @@
 
 ## Why should we secure API Keys?
 
-API keys are used as a means of authentication and authorization when accessing APIs. The primary purpose of API keys is to provide a secure way for developers and applications to interact with APIs while controlling access and monitoring usage. Because API keys are a means of security, it is important to put API keys in a secure location when building your apps.
+API keys are used to authenticate and authorize when accessing APIs. The primary purpose of API keys is to provide a secure way for developers and applications to interact with APIs while controlling access and monitoring usage. Because API keys are a means of security, it is crucial to put API keys in a secure location when building your apps.
 
 Imagine you are working on application and you leave your API key visible in your code. If you were to push your code to GitHub, someone could find your repo and copy your API key so they can make requests using it. This would then make you responsible for the calls that this person made. If an API is using a key to limit requests per day, this other person might reach your allotted number of requests. This means your app wouldn't be able to make any more requests to get the data that it needs to run properly. Even worse, if the API key is tied to a credit card that is charged for each request made, you could end up owing a lot of money. Even if you don't push your code to GitHub, if your app is deployed, there are other ways hackers could figure out your API Key.
 
-API key security is essential, and in this lesson we're going to go over how to make sure your API keys are securely hidden from hackers.
+API key security is essential, and in this lesson, we will go over how to ensure your API keys are securely hidden from hackers.
 
 ## Proxy servers
 
 The easiest way to hide your API keys is to create a "proxy server," which is basically just a web server application which itself makes requests to the API. Here's how the flow of requests/responses would go:
 
 1. Your React application makes a request to the "proxy server" you've created
-1. The proxy server in turn makes a request to the API
+1. The proxy server, in turn, makes a request to the API
 1. The API responds with data to your proxy server
 1. Your proxy server responds to your React application with the data it just received from the API.
 
@@ -53,7 +53,7 @@ cd proxy-server-example
 touch server.js
 ```
 
-Now initialize a Node.js project and install express
+Now, initialize a Node.js project and install Express.
 
 ```bash
 npm init -y
@@ -75,7 +75,7 @@ Start it by running `nodemon` in the terminal and test out `http://localhost:300
 
 ## Creating a route
 
-Now let's create a route that our React app will make requests to:
+Now, let's create a route that our React app will make requests to:
 
 ```js
 // server.js
@@ -132,13 +132,13 @@ Be sure to delete the following line of code from your React app:
 const API_KEY = '<YOUR_API_KEY_HERE>'
 ```
 
-Now your React code is nice and secure!  
+Now, your React code is nice and secure!  
 
 But wait! If you test this out, the React app should break. You should see errors in the console about how your AJAX request was blocked by "CORS policy" with an error message that looks something like this:
 
 ![](https://i.imgur.com/gj5QNtA.png)
 
-Don't worry!  We'll solve that next.
+Don't worry! We'll solve that next.
 
 ## Setting up CORS
 
@@ -186,7 +186,7 @@ Create the `.env` file:
 touch .env
 ```
 
-And now create an environment variable inside our `.env` file and paste the key from your Express app:
+Now create an environment variable inside our `.env` file and paste the key from your Express app:
 
 ```plaintext
 API_KEY=<YOUR_API_KEY_HERE>
@@ -219,14 +219,14 @@ Create the `.gitignore` file by running the following:
 touch .gitignore
 ```
 
-Now edit `.gitignore` to ignore the `.env` file (and while we're in there, we might as well ignore the `node_modules` directory as well - this keeps repository sizes manageable and our Git operations efficient):
+Now edit `.gitignore` to ignore the `.env` file (and while we're in there, we might as well ignore the `node_modules` directory - this keeps repository sizes manageable and our Git operations efficient):
 
 ```bash
 .env
 node_modules
 ```
 
-Now when you run `git status` you should see the following:
+Now, when you run `git status` you should see the following:
 
 ![](https://i.imgur.com/ZELzZFA.png)
 
