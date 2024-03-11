@@ -8,7 +8,7 @@ Data can flow within a React app through `props`, but what happens when we want 
 
 ## What is AJAX?
 
-The term **AJAX (Asynchronous JavaScript and XML)** refers to a collection of techniques for sending and receiving data within client-side web application. These techniques allow client-side apps to communicate asynchronously with a server, and update the DOM accordingly. Ultimately, this produces more interactive web applications. 
+The term **AJAX (Asynchronous JavaScript and XML)** refers to a collection of techniques for sending and receiving data within client-side web applications. These techniques allow client-side apps to communicate asynchronously with a server, and update the DOM accordingly. Ultimately, this produces more interactive web applications. 
 
 Despite the inclusion of XML in its name, today, AJAX typically deals with the exchange of JSON (JavaScript Object Notation) data. It's important to note that this exchange of data is asynchronous, meaning data can be fetched without freezing the user inteface, or requiring a page reload. In modern web apps, this asynchronous exchange of data is often achieved through JavaScript's **Fetch API** or libraries such as Axios.
 
