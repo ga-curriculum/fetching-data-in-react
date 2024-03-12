@@ -1,6 +1,6 @@
 # ![Fetching Data in React - Fetching and Display Data with User Input](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to tktk
+**Learning objective:** By the end of this lesson, students will be able to make a `fetch` request to the weather API using dynamic data from a user input form.
 
 ## Overview
 

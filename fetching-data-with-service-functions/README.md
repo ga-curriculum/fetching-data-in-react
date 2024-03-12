@@ -46,9 +46,9 @@ Since each request to the Weather API requires our `API_KEY`, we'll incorporate 
 
 Add the following to `src/services/weatherService.js`:
 
-```js
+```javascript
 // src/services/weatherService.js
-const API_KEY = '<YOUR_API_KEY_HERE>'
+const API_KEY = '<YOUR_API_KEY_HERE>';
 const BASE_URL = `http://api.weatherapi.com/v1/current.json?key=${API_KEY}`;
 ```
 
@@ -60,14 +60,14 @@ Our function will use the `fetch()` method to make a GET request to the endpoint
 
 Add the following to `src/services/weatherService.js`:
 
-```js
+```javascript
 // src/services/weatherService.js
 const show = async (city) => {
   try {
     const queryString = `&q=${city}`;
     const res = await fetch(BASE_URL + queryString);
     const data = await res.json();
-    console.log('Data': data);
+    console.log('Data:', data);
     return data;
   } catch (err) {
     console.log(err);
