@@ -1,4 +1,4 @@
-# ![Fetching Data in React - tktk Microlesson Name](./assets/hero.png)
+# ![Fetching Data in React - Background Data Fetching](./assets/hero.png)
 
 **Learning objective:** By the end of this lesson, students will be able to trigger data fetches with the `useEffect()` hook.
 

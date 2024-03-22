@@ -19,7 +19,7 @@ The easiest way to hide your API keys is to create a "proxy server," which is ba
 1. The API responds with data to your proxy server
 1. Your proxy server responds to your React application with the data it just received from the API.
 
-![tktk Hunter, something like this, but not so awful, please](https://i.imgur.com/NXN2RnD.png)
+![Proxy server](./assets/proxy.png)
 
 Why is this helpful?  Because we can use a `.env` file to hide the API key when writing our proxy server app. This way, instead of having your React app make requests to:
 

@@ -10,23 +10,23 @@ To begin, click [here](https://www.weatherapi.com/) to navigate to the Weather A
 
 On the landing page, click on the Sign Up button:
 
-![tktk hunter](./assets/signup.png)
+![Signup](./assets/signup.png)
 
 You should be presented with a sign up form. 
 
 After filling out the form, you should see the following Account Verification screen:
 
-![tktk hunter](./assets/verify.png)
+![Verify](./assets/verify.png)
 
 Open the email account that you used to sign up, and follow the provided link to verify your account.
 
 After verifying your email, you should see the following screen:
 
-![tktk hunter](./assets/email-verified.png)
+![Email verified](./assets/email-verified.png)
 
 After logging in, you should be taken to a dashboard page displaying your API Key:
 
-![tktk hunter](./assets/dashboard.png)
+![Dashboard](./assets/dashboard.png)
 
 Copy this key and store it somewhere readily accessible. We'll need it later on in this lesson.
 
@@ -36,15 +36,15 @@ The Weather API offers a straightforward interface for testing out the API. It c
 
 First enter your API Key in the field at the top:
 
-![tktk hunter](./assets/explorer.png)
+![Explorer](./assets/explorer.png)
 
 Next, enter a city you wish to get weather data for:
 
-![tktk hunter](./assets/city.png)
+![City](./assets/city.png)
 
 After submitting the request, you should see a response like the one below:
 
-![tktk hunter](./assets/response.png)
+![Response](./assets/response.png)
 
 There are two important pieces of information here:
 
