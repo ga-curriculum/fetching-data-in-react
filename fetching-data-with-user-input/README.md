@@ -1,6 +1,6 @@
 # ![Fetching Data in React - Fetching Data with User Input](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to make a `fetch` request to the weather API using dynamic data from a user input form.
+**Learning objective:** By the end of this lesson, students will be able to make a `fetch` request to the weather API using dynamic data from user input.
 
 ## Overview
 
@@ -28,7 +28,7 @@ const WeatherSearch = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // We'll call upon fetch function here shortly
+    // We'll call the fetch function here
     setCity('');
   };
 
@@ -36,16 +36,14 @@ const WeatherSearch = (props) => {
     <section>
       <h2>Search</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor='city'>
-          Enter a city:
-        </label>
+        <label htmlFor="city">Enter a city:</label>
         <input
-          id='city'
-          type='text'
+          id="city"
+          type="text"
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
-        <button type='submit'>Search</button>
+        <button type="submit">Search</button>
       </form>
     </section>
   );
@@ -67,15 +65,15 @@ Update the `return` in `src/App.jsx` with the following:
 
 ```jsx
 // src/App.jsx
-  return (
-    <main>
-      <h1>Weather API</h1>
-      <WeatherSearch />
-    </main>
-  );
+return (
+  <main>
+    <h1>Weather API</h1>
+    <WeatherSearch />
+  </main>
+);
 ```
 
-In your browser, you should now be able to type information into the search form.
+In your browser, you should now be able to type information into the search field and see it added to state.
 
 ## Submitting a search
 
@@ -92,14 +90,14 @@ And define the following `useState`:
 
 ```jsx
 // src/App.jsx
-  const [weather, setWeather] = useState({})
+const [weather, setWeather] = useState({});
 ```
 
 Next we'll need to make a few changes to our `fetchData` function.
 
-Our `fetchData` function will need to accept a `city` string as an argument, and `setWeather` state based on the `data` we get as a response. 
+Our `fetchData` function will need to accept a `city` string as an argument, and `setWeather` state based on the `data` we get as a response.
 
-The information we get back from the Weather API is quite detailed, but the data structure used in these responses is not ideal for rendering. In a situation like this, it's often a good idea to clean up the shape of the data before setting it in state. 
+The information we get back from the Weather API is quite detailed, but the data structure used in these responses is not ideal for rendering. In a situation like this, it's often a good idea to clean up the shape of the data before setting it in state.
 
 There are three pieces of information we want to display for our users:
 
@@ -110,48 +108,50 @@ There are three pieces of information we want to display for our users:
 Given that, we can create a new object like the one below, and set that to state:
 
 ```js
-    const newWeatherState = {
-      location: data.location.name,
-      temperature: data.current.temp_f,
-      condition: data.current.condition.text,
-    };
+const newWeatherState = {
+  location: data.location.name,
+  temperature: data.current.temp_f,
+  condition: data.current.condition.text,
+};
 ```
 
 Refactor your `fetchData` function as shown below:
 
 ```jsx
 // src/App.jsx
-  const fetchData = async (city) => {
-    const data = await weatherService.show(city);
-    const newWeatherState = {
-      location: data.location.name,
-      temperature: data.current.temp_f,
-      condition: data.current.condition.text,
-    };
-    setWeather(newWeatherState);
+const fetchData = async (city) => {
+  const data = await weatherService.show(city);
+  const newWeatherState = {
+    location: data.location.name,
+    temperature: data.current.temp_f,
+    condition: data.current.condition.text,
   };
-  // The following log should be outside of the fetchData function
-  console.log('State:', weather);
+  setWeather(newWeatherState);
+};
+// The following log should be outside of the fetchData function
+console.log('State:', weather);
 ```
 
-> 💡 Why aren't we logging `weather` within `fetchData`? This is due to the asynchronous nature of state updates. If we logged state within the function, we would see an out of date record of state. By logging it outside the function, but within the component, we can see the current value held in state when the component rerenders.
+> 💡 Why aren't we logging `weather` within `fetchData`? This is due to the asynchronous nature of state updates. If we tried to log state within the function, we would see an out of date record of state. By logging it outside the function, but within the component, we can see the current value held in state when the component rerenders.
+
+In order to lift state back to `App`, we'll need to pass our `fetchData` function down into our `WeatherSearch` component.
 
 Pass `fetchData` down to `<WeatherSearch />` as a prop:
 
 ```jsx
 // src/App.jsx
-      <WeatherSearch fetchData={fetchData} />
+<WeatherSearch fetchData={fetchData} />
 ```
 
 And update `handleSubmit` with the following:
 
 ```jsx
 // src/components/WeatherSearch.jsx
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    props.fetchData(city); // Don't forget to pass in city state!
-    setCity('');
-  };
+const handleSubmit = (e) => {
+  e.preventDefault();
+  props.fetchData(city); // Don't forget to pass city state!
+  setCity('');
+};
 ```
 
 Check your browser console or React Dev Tools. You should see weather information is now held in `weather` state!
@@ -198,7 +198,14 @@ Next, add `<WeatherDetails />` to the `return` with `weather` included as a prop
 
 ```jsx
 // src/App.jsx
-      <WeatherDetails weather={weather} />
+
+return (
+  <main>
+    <h1>Weather API</h1>
+    <WeatherSearch />
+    <WeatherDetails weather={weather} />
+  </main>
+);
 ```
 
 Confirm that `weather` has been passed down through props.
@@ -207,14 +214,14 @@ Finally, update the `return` in `src/components/WeatherDetails.jsx` with the fol
 
 ```jsx
 // src/components/WeatherDetails.jsx
-  return (
-    <section>
-      <h2>Weather Details</h2>
-      <p>Location: {props.weather.location}</p>
-      <p>Temperature: {props.weather.temperature}</p>
-      <p>Condition: {props.weather.condition}</p>
-    </section>
-  );
+return (
+  <section>
+    <h2>Weather Details</h2>
+    <p>Location: {props.weather.location}</p>
+    <p>Temperature: {props.weather.temperature}</p>
+    <p>Condition: {props.weather.condition}</p>
+  </section>
+);
 ```
 
 You should now be able to view the result of a search. Try it out in your browser!
