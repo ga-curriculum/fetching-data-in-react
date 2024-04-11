@@ -6,14 +6,14 @@ In this module, students will learn how to fetch data from an API and display it
 
 ## Content
 
-| Lesson                                                                                    | Skills                                                             |
-| ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| [Setup](../setup/README.md)                                                               | Setting up the development environment                             |
-| [Concepts](../concepts/README.md)                                                         | Describe the importance of getting data from a back-end into React |
-| [Setting Up the Weather API](../setting-up-the-weather-api/README.md)                     | Setting up the Weather API to access an API Key                    |
-| [Fetching Data with Service Functions](../fetching-data-with-service-functions/README.md) | Making a fetch request with service functions in React             |
-| [Fetching Data with User Input](../fetching-data-with-user-input/README.md)               | Making fetch requests with user input in React                     |
-| [Background Data Fetching](../background-data-fetching/README.md)                         | Fetching data in the background with the `useEffect()` hook        |
+| Lesson                                                                                   | Skills                                                                              |
+| ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| [Setup](../setup/README.md)                                                               | Setting up the development environment                                              |
+| [Concepts](../concepts/README.md)                                                         | Understanding AJAX and its application in SPAs for HTTP requests and data retrieval |
+| [Setting Up the Weather API](../setting-up-the-weather-api/README.md)                     | Configuring access to the Weather API and managing API Keys                         |
+| [Fetching Data with Service Functions](../fetching-data-with-service-functions/README.md) | Utilizing service functions in React to execute fetch requests                      |
+| [Fetching Data with User Input](../fetching-data-with-user-input/README.md)               | Implementing dynamic fetch requests based on user input in React                    |
+| [Background Data Fetching](../background-data-fetching/README.md)                         | Performing asynchronous data fetching using React's `useEffect()` hook              |
 
 ## Level Up
 
