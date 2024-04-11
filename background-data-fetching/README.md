@@ -4,7 +4,7 @@
 
 ## Background data fetching
 
-So far, we've learned how to fetch data based on user interactions, such as clicking a button or submitting a form. However, there are instances where we want data to be fetched automatically. For example, when a page first loads (or component first mounts), we might want to display a list of products. Additional user actions might refine these results, but we still want some initial data to load when the site is accessed.
+So far, we've learned how to fetch data based on user interactions, such as clicking a button or submitting a form. However, there are instances where we might want data to be retrieved automatically. For example, when a page first loads (or component first mounts), we might want to display a list of products. Additional user actions might refine these results, but we still want some initial data to load when the site is accessed.
 
 To achieve this background data fetching, React provides a hook called `useEffect()`. 
 
@@ -44,16 +44,16 @@ Though the dependency array is optional, you will typically want to include it. 
 
 ## Fetching default weather data
 
-Let's see how `useEffect()` can be implemented in our weather app. 
+Let's see how `useEffect()` can be practically implemented in our weather app. 
 
-First, update the existing import in `src/App.jsx` with `useEffect`:
+First, update the existing import in `src/App.jsx` with this new hook -  `useEffect`:
 
 ```jsx
 // src/App.jsx
 import { useState, useEffect } from 'react';
 ```
 
-Above the `return` in `src/App.jsx`, build out the scaffolding for our `useEffect()`:
+Above the `return` in `src/App.jsx`, build out the scaffolding for `useEffect()`:
 
 ```jsx
 // src/App.jsx
@@ -84,7 +84,7 @@ Update your `useEffect` with the following:
   }, []);
 ```
 
-If you check your browser, you may notice that our code so far has not had an effect on `weather` state. This is because we have only **defined** the `fetchDefaultData` within our `useEffect()`. At the moment, everytime the `useEffect()` hook runs, it recreates the `fetchDefaultData` function, and nothing else. The next step is to **call upon** the `fetchDefaultData` within the `useEffect()` callback.
+If you check your browser, you may notice that our code so far has not had an effect on `weather` state. This is because we have only **defined** the `fetchDefaultData` function within our `useEffect()`. At the moment, everytime the `useEffect()` hook runs, it recreates the `fetchDefaultData` function, and nothing else. The next step is to **call** the `fetchDefaultData` function within the `useEffect()` callback.
 
 Update your `useEffect` with the following:
 
@@ -102,10 +102,10 @@ Update your `useEffect` with the following:
       setWeather(newWeatherState);
     };
 
-    // Call upon the fetch function when the page loads:
+    // Call the fetch function when the page loads:
     fetchDefaultData();
 
   }, []);
 ```
 
-Try it out in your browser. When the page loads, you should see weather information for New York appear as a default.
+Try it out in your browser! When the page loads, you should see weather information for New York appear as a default.

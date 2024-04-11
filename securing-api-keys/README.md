@@ -4,11 +4,14 @@
 
 ## Why should we secure API Keys?
 
-API keys are used to authenticate and authorize when accessing APIs. The primary purpose of API keys is to provide a secure way for developers and applications to interact with APIs while controlling access and monitoring usage. Because API keys are a means of security, it is crucial to put API keys in a secure location when building your apps.
+API keys are essential for secure communication between your application and an API. They authenticate your app, control access, and track usage. Keeping API keys secure is crucial because they are a significant security component.
 
-Imagine you are working on application and you leave your API key visible in your code. If you were to push your code to GitHub, someone could find your repo and copy your API key so they can make requests using it. This would then make you responsible for the calls that this person made. If an API is using a key to limit requests per day, this other person might reach your allotted number of requests. This means your app wouldn't be able to make any more requests to get the data that it needs to run properly. Even worse, if the API key is tied to a credit card that is charged for each request made, you could end up owing a lot of money. Even if you don't push your code to GitHub, if your app is deployed, there are other ways hackers could figure out your API Key.
+Consider this scenario: you’re developing an app and accidentally leave your API key in the code. If you then upload this code to a public platform like GitHub, someone could find and use your API key without your knowledge. This could have several consequences:
 
-API key security is essential, and in this lesson, we will go over how to ensure your API keys are securely hidden from hackers.
+- **Exceeding Usage Limits**: If the API has daily request limits, the unauthorized person could exhaust these, preventing your app from functioning correctly.
+- **Incurring Costs**: If the API charges per request and the key is linked to your credit card, you could face unexpected charges.
+
+Even without sharing your code, deployed apps can be vulnerable if API keys are not properly secured. In this lesson, we'll explore effective methods to protect your API keys from unauthorized access and misuse.
 
 ## Proxy servers
 
@@ -21,7 +24,7 @@ The easiest way to hide your API keys is to create a "proxy server," which is ba
 
 ![Proxy server](./assets/proxy.png)
 
-Why is this helpful?  Because we can use a `.env` file to hide the API key when writing our proxy server app. This way, instead of having your React app make requests to:
+Why is this helpful? Because we can use a `.env` file to hide the API key when writing our proxy server app. This way, instead of having your React app make requests to:
 
 ```
 http://api.weatherapi.com/v1/current.json?key=93926e8f19954ff8892185839241302&q=Philadelphia
@@ -39,7 +42,7 @@ Notice that there's no API key in the 2nd request. Your React code can be pushed
 
 **NOTE:** Have your Fetching Data in React Weather Application open and your dev server running.
 
-Go into  **`~/code/ga/lectures`** and create a new directory called `proxy-server-example`:
+Go into **`~/code/ga/lectures`** and create a new directory called `proxy-server-example`:
 
 ```bash
 cd ~/code/ga/lectures
@@ -66,8 +69,8 @@ In `server.js`, initialize a new Express app:
 const express = require('express');
 const app = express();
 
-app.listen(3000, ()=>{
-	console.log('listening on port 3000...');
+app.listen(3000, () => {
+  console.log('listening on port 3000...');
 });
 ```
 
@@ -81,7 +84,7 @@ Now, let's create a route that our React app will make requests to:
 // server.js
 
 // Add your API_KEY:
-const API_KEY = '<YOUR_API_KEY_HERE>'
+const API_KEY = '<YOUR_API_KEY_HERE>';
 // Define a BASE_URL that includes the API_KEY:
 const BASE_URL = `http://api.weatherapi.com/v1/current.json?key=${API_KEY}`;
 
@@ -106,6 +109,7 @@ First, update the `BASE_URL`:
 
 ```js
 // src/services/weatherService.js
+
 const BASE_URL = `http://localhost:3000/weather/`;
 ```
 
@@ -113,6 +117,7 @@ Next, update what is being passed to the `fetch()` method:
 
 ```js
 // src/services/weatherService.js
+
 const show = async (city) => {
   try {
     const res = await fetch(BASE_URL + city);
@@ -129,10 +134,11 @@ Be sure to delete the following line of code from your React app:
 
 ```js
 // src/services/weatherService.js
-const API_KEY = '<YOUR_API_KEY_HERE>'
+
+const API_KEY = '<YOUR_API_KEY_HERE>';
 ```
 
-Now, your React code is nice and secure!  
+Now, your React code is nice and secure!
 
 But wait! If you test this out, the React app should break. You should see errors in the console about how your AJAX request was blocked by "CORS policy" with an error message that looks something like this:
 
@@ -168,7 +174,7 @@ Doing this tells our Express app to allow requests from other domains and ports.
 
 ## Hiding the API key
 
-We're almsot at the end! The next step is hiding our API key, which is still visible in our Express code. Not secure! Let's hide it in a `.env` file. First, install the `dotenv` package:
+We're almost done! The next step is hiding our API key, which is still visible in our Express code. Not secure! Let's hide it in a `.env` file. First, install the `dotenv` package:
 
 ```bash
 npm i dotenv
@@ -196,6 +202,7 @@ Now you can use `process.env.API_KEY` in your Express app to place the API key i
 
 ```js
 // server.js
+
 const BASE_URL = `http://api.weatherapi.com/v1/current.json?key=${process.env.API_KEY}`;
 ```
 

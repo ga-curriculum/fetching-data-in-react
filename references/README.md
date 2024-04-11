@@ -2,12 +2,6 @@
 
 ## Lesson references
 
-- [tktk descriptive name of link]()
-- [tktk descriptive name of link]()
-- [tktk descriptive name of link]()
+- [AJAX](https://developer.mozilla.org/en-US/docs/Glossary/AJAX)
+- [Weather API](https://www.weatherapi.com/)
 
-## Level Up references
-
-- [tktk descriptive name of link]()
-- [tktk descriptive name of link]()
-- [tktk descriptive name of link]()

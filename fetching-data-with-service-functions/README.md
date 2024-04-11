@@ -4,7 +4,7 @@
 
 ## The Fetch API
 
-Let's get some practice using AJAX techniques in React. While there are several options for retrieving external data in React, we'll be using the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). The Fetch API is a tool provided by modern browsers (and Node.js with version 18.0.0), that allows developers to make asynchronous HTTP requests using JavaScript. With the Fetch API's `fetch()` method, our React apps can communicate with servers held elsewhere on the web.
+Let's get some practice using AJAX techniques in React. While there are several options for retrieving external data in React, we'll be using the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). The Fetch API is a tool provided by modern browsers (and Node.js with version 18.0.0), that allows developers to make asynchronous HTTP requests using JavaScript. With the Fetch API's `fetch()` method, our React apps can communicate with servers hosted elsewhere on the web.
 
 In this lesson, we'll use the global `fetch()` method to retrieve weather information from the [Weather API](https://www.weatherapi.com/). When we make a request to the Weather API server, we can expect JSON data as a response. This data can then be stored in state, and rendered for our users.
 
@@ -12,9 +12,9 @@ In this lesson, we'll use the global `fetch()` method to retrieve weather inform
 
 ## Service functions
 
-When implementing the Fetch API within a React app, it's best practice to encapsulate fetching logic into dedicated modules known as *services*. These modules contain functions for making fetch requests, often grouped by the resource they are dealing with. 
+When implementing the Fetch API within a React app, it's best practice to encapsulate fetching logic into dedicated modules known as _services_. These modules contain functions for making fetch requests, often grouped by the resource they are dealing with.
 
-For example, we might have a `src/services/petService.js` module for a `Pet` resource. Inside `src/services/petService.js`, we could include various service functions for creating, reading, updating, or deleting the `Pet` resource. When our React app needs to call upon a given service function, we can simply `import` it inside the appropriate component.
+For example, we might have a `src/services/bookService.js` module for a `Book` resource. Inside `src/services/bookService.js`, we could include various service functions for creating, reading, updating, or deleting the `Book` resource. When our React app needs to call upon a given service function, we can simply `import` it inside the appropriate component.
 
 While it is possible to write out fetching logic directly within a component, this will often make an application more difficult to maintain as it grows in complexity.
 
@@ -26,7 +26,7 @@ The benefits of this pattern include:
 
 ## Creating service functions
 
-Let's create a dedicated service module for our requests to the Weather API. 
+Let's create a dedicated service module for our requests to the Weather API.
 
 Begin by creating a `services` directory inside `src`:
 
@@ -40,7 +40,7 @@ Then, create the service file:
 touch src/services/weatherService.js
 ```
 
-At the top of this file, we'll define a `BASE_URL`. This variable represents the initial part of the URL we wish to make requests to. It typically includes the protocol, the domain name, and any segments of the path that are shared across different endpoints of the API. A `BASE_URL` simplifies the process of making requests within different service functions that share the same starting point, as additional  parameters or paths can be appended within each function.
+At the top of this file, we'll define a `BASE_URL`. This variable represents the initial part of the URL we wish to make requests to. It typically includes the protocol, the domain name, and any segments of the path that are shared across different endpoints of the API. A `BASE_URL` simplifies the process of making requests within different service functions that share the same starting point, as additional parameters or paths can be appended within each function.
 
 Since each request to the Weather API requires our `API_KEY`, we'll incorporate this into our `BASE_URL` to avoid repetition in our service functions.
 
@@ -56,7 +56,7 @@ const BASE_URL = `http://api.weatherapi.com/v1/current.json?key=${API_KEY}`;
 
 Next, let's define an asynchronous function that will make our fetch request.
 
-Our function will use the `fetch()` method to make a GET request to the endpoint as specified in our `BASE_URL`. When making this request, we'll need to include a query parameter, specifying the city we want data for. 
+Our function will use the `fetch()` method to make a GET request to the endpoint as specified in our `BASE_URL`. When making this request, we'll need to include a query parameter, specifying the city we want data for.
 
 Add the following to `src/services/weatherService.js`:
 
@@ -75,7 +75,7 @@ const show = async (city) => {
 };
 ```
 
-In the code block above, we are constructing a request URL, sending the request, and then parsing the response as JSON. Both `fetch()` and the `.json()` method are asynchronous, so we include the `await` keyword to pause the execution of the code. Notice how we define the `queryString` variable on its own line, and then add it to the end of the `BASE_URL`. This just makes our code a bit more legible. 
+In the code block above, we are constructing a request URL, sending the request, and then parsing the response as JSON. Both `fetch()` and the `.json()` method are asynchronous, so we include the `await` keyword to pause the execution of the code. Notice how we define the `queryString` variable on its own line, and then add it to the end of the `BASE_URL`. This just makes our code a bit more legible.
 
 > 💡 The [`.json()`](https://developer.mozilla.org/en-US/docs/Web/API/Response/json) method converts the JSON formatted string from the response into a JavaScript object.
 
@@ -94,7 +94,7 @@ Run the following command in your terminal to execute the file:
 node src/services/weatherService.js
 ```
 
-If successful, you should see a response like the following in your VS Code terminal:
+If successful, you should see a response like the following in your terminal:
 
 ```plaintext
 Data: {
@@ -105,7 +105,7 @@ Data: {
 
 ## Implementing services in React components
 
-With our service function built out, we can not implement it within a React component.
+With our service function built out, we can now use it within a React component.
 
 First, let's be sure to `export` the function:
 
@@ -114,9 +114,7 @@ First, let's be sure to `export` the function:
 
 // show('New York'); <=== Remove this line!
 
-export {
-  show
-};
+export { show };
 ```
 
 Next, add the following `import` to the top of `src/App.jsx`:
@@ -133,7 +131,6 @@ Finally, add the following to the `App` component:
 ```jsx
 // src/App.jsx
 const App = () => {
-
   const fetchData = async () => {
     const data = await weatherService.show('New York');
     console.log('Data:', data);
@@ -142,9 +139,7 @@ const App = () => {
   return (
     <main>
       <h1>Weather API</h1>
-      <button onClick={fetchData}>
-        Fetch Weather Data
-      </button>
+      <button onClick={fetchData}>Fetch Weather Data</button>
     </main>
   );
 };
@@ -152,4 +147,6 @@ const App = () => {
 export default App;
 ```
 
-Here, we are calling upon `fetchData` with an `onClick` event handler, and logging the data returned from ` weatherService.show('New York')` to the console. Try it out in your browser!
+> Here, we are calling upon `fetchData` with an `onClick` event handler, and logging the data returned from ` weatherService.show('New York')` to the console.
+
+Try it out in your browser!
