@@ -26,7 +26,7 @@ After verifying your email, you should see the following screen:
 
 After logging in, you should be taken to a dashboard page displaying your API Key:
 
-![Dashboard](./assets/dashboard.png) tktk - remove key?
+![Dashboard](./assets/dashboard.png)
 
 Copy this key and store it somewhere readily accessible. We'll need it later on in this lesson.
 
