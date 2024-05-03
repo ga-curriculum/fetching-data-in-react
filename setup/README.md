@@ -69,15 +69,31 @@ const App = () => {
 export default App
 ```
 
+### Running the development server
+
+To start the development server and view our app in the browser, we'll use the following command: 
+
+```bash
+npm run dev
+```
+
+You should see that `Vite` is available on port number 5173: 
+
+```plaintext
+localhost:5173
+```
+
 ### GitHub setup
 
 To add this project to GitHub, initialize a Git repository:
 
 ```bash
 git init
+git add .
+git commit -m "init commit"
 ```
 
-Make a new repository on [GitHub](https://github.com/) named `fetching-data-in-react`. 
+Make a new repository on [GitHub](https://github.com/) named fetching-data-in-react. 
 
 Link your local project to your remote GitHub repo:
 
