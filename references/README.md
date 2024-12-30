@@ -1,7 +1,9 @@
-# ![Fetching Data in React - References](./assets/hero.png)
+<h1>
+  <span class="headline">Fetching Data in React</span>
+  <span class="subhead">References</span>
+</h1>
 
 ## Lesson references
 
-- [AJAX](https://developer.mozilla.org/en-US/docs/Glossary/AJAX)
+- [MDN - AJAX](https://developer.mozilla.org/en-US/docs/Glossary/AJAX)
 - [Weather API](https://www.weatherapi.com/)
-
